@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-gold: #C9A96E;
+  --color-antrasit: #1C1C1E;
+  --color-bej: #F8F4EE;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scrolling */
+}
+
+body {
+  background-color: #F8F4EE;
+  color: #1C1C1E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #1C1C1E;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A96E;
+  border-radius: 0;
+}
+
+/* Date input styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: opacity(0.4);
+  cursor: pointer;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(201, 169, 110, 0.3);
+  color: #1C1C1E;
+}
+
+/* Transition duration utilities */
+.duration-400 { transition-duration: 400ms; }
+.duration-600 { transition-duration: 600ms; }
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.4s ease;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Prevent content shift from scrollbar */
+html {
+  overflow-y: scroll;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Cinematic letter-spacing for hero text */
+  .tracking-cinematic {
+    letter-spacing: 0.2em;
+  }
+
+  /* Film grain overlay (usage: add class to relative positioned element) */
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.028;
+    mix-blend-mode: overlay;
+    z-index: 1;
+  }
+}
